@@ -5,11 +5,18 @@ public class Linkedlisttest {
 
     public static void main(String[] args) {
 
-        LinkedList<String> list = new LinkedList<String>();
+        MyQueue<String> q = new LinkedList<String>();
 
-        list.add("lol");
+        q.add("hey");
+        q.add("heyhey");
 
-        System.out.println(list);
+
+        for(String s : q) {
+            System.out.println(s);
+        }
+
+
+
 
     }
 
