@@ -209,10 +209,12 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
     private class It implements Iterator<E> {
 
         ListNode<E> current;
+        int index;
 
 
         public It() {
             current = front;
+            index = 0;
         }
 
         public boolean hasNext() {
@@ -220,9 +222,16 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
             return current != null;
         }
 
+        public void remove() {
+
+            LinkedList.this.remove(index-1);
+
+        }
+
         public E next() {
             E temp = current.data;
             current = current.next;
+            index++;
             return temp;
         }
     }

@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**
  * Created by borisgrunwald on 17/09/2016.
  */
@@ -9,11 +11,19 @@ public class Linkedlisttest {
 
         q.add("hey");
         q.add("heyhey");
+        q.add("lol");
 
+        Iterator<String> it = q.iterator();
 
-        for(String s : q) {
-            System.out.println(s);
+        while(it.hasNext()) {
+            if(it.next().equals("heyhey")) {
+                it.remove();
+            }
         }
+
+        System.out.println(q);
+
+
 
 
 
