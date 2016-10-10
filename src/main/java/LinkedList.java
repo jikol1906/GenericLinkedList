@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Iterator;
 
 /**
@@ -7,6 +8,8 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
 
     private ListNode<E> front;
     private int size = 0;
+
+
 
 
     public LinkedList() {
@@ -65,22 +68,8 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
             front = front.next;
         } else {
             ListNode<E> curr = nodeAt(index - 1);
-
-            if (curr.next == null) {
-                throw new IndexOutOfBoundsException("Index > size");
-                //If it is the last node in the list.
-            } else if (curr.next.next == null) {
-                curr.next = null;
-                //If it is neither last or front node.
-            } else {
-                curr.next = curr.next.next;
-            }
-
-
+            removeNode(curr);
         }
-
-        size--;
-
 
     }
 
@@ -118,6 +107,22 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
 
         return curr;
 
+
+    }
+
+    private void removeNode(ListNode<E> toRemove) {
+
+        if (toRemove.next == null) {
+            throw new IndexOutOfBoundsException("Index > size");
+            //If it is the last node in the list.
+        } else if (toRemove.next.next == null) {
+            toRemove.next = null;
+            //If it is neither last or front node.
+        } else {
+            toRemove.next = toRemove.next.next;
+        }
+
+        size--;
 
     }
 
@@ -209,12 +214,11 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
     private class It implements Iterator<E> {
 
         ListNode<E> current;
-        int index;
-
+        ListNode<E> prev;
 
         public It() {
             current = front;
-            index = 0;
+            prev = new ListNode<E>(null, new ListNode<E>(null, front));
         }
 
         public boolean hasNext() {
@@ -224,14 +228,14 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
 
         public void remove() {
 
-            LinkedList.this.remove(index-1);
+            LinkedList.this.removeNode(prev);
 
         }
 
         public E next() {
             E temp = current.data;
             current = current.next;
-            index++;
+            prev = prev.next;
             return temp;
         }
     }
