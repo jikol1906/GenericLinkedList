@@ -15,11 +15,7 @@ public class Linkedlisttest {
 
         Iterator<String> it = q.iterator();
 
-        while(it.hasNext()) {
-            if(it.next().equals("heyhey")) {
-                it.remove();
-            }
-        }
+        it.remove();
 
         System.out.println(q);
 

@@ -13,7 +13,7 @@ public class ListNode<E> {
         this.data = data;
         this.next = next;
 
-    }
+    } Colle
 
     public ListNode(E data) {
 

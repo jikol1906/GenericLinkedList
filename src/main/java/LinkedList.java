@@ -211,6 +211,25 @@ public class LinkedList<E> implements MyQueue<E>, MyStack<E> {
         return new It();
     }
 
+    /**
+     *
+     *
+     *    prev                  current
+     *     |                       |
+     *     |                       |
+     *     \/                      \/
+     *
+     *                          front
+     *    _____      _____      _____      _____      _____      _____      _____
+     *   |     |    |     |    |     |    |     |    |     |    |     |    |     |
+     *   |_____| -> |_____| -> |_____| -> |_____| -> |_____| -> |_____| -> |_____|
+     *
+     *
+     *
+     *
+     */
+
+
     private class It implements Iterator<E> {
 
         ListNode<E> current;

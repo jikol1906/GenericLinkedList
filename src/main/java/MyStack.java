@@ -1,7 +1,7 @@
 /**
  * Created by borisgrunwald on 27/09/2016.
  */
-public interface MyStack<E> {
+public interface MyStack<E> extends Iterable<E> {
 
     public void push(E data);
 
